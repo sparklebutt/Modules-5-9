@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+         #
+#    By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/23 11:11:54 by shaboom           #+#    #+#              #
-#    Updated: 2025/01/23 11:13:14 by shaboom          ###   ########.fr        #
+#    Updated: 2025/02/06 11:42:05 by araveala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CPPFLAGS = -Werror -Wextra -Wall -Wshadow -Wno-shadow -std=c++11 -MMD -MP
 BUILDDIR = buildofiles/
 OFILES = $(addprefix $(BUILDDIR), $(notdir $(CPPFILES:.cpp=.o)))
 DEPFILES = $(OFILES:.o=.d)
-EXEC = Whatever
+EXEC = iter
 
 
 all: $(BUILDDIR) $(EXEC)

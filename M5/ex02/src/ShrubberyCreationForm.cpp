@@ -36,13 +36,13 @@ ShrubberyCreationForm::~ShrubberyCreationForm () {
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
-	(void)executor;
 	std::ofstream outFile(getTarget() + "_shrubbery");
 	if(outFile.is_open())
 	{
 		outFile<<"Root\n├── Folder1\n│   ├── File1.txt\n│   ├── File2.txt\n"
 		<<"│   └── Subfolder1\n│       ├── File3.txt\n│       └── File4.txt\n"
-		<<"└── Folder2\n├── File5.txt\n└── File6.txt\n";
+		<<"└── Folder2\n├── File5.txt\n└── File6.txt\n"<<"signed by : "
+		<<executor.getName()<<"\n";
 	}
 	else
 		std::cerr<<"error occured on open"<<std::endl;

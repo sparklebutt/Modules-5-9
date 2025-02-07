@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:29:45 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/20 16:00:31 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/07 12:22:54 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : m_name(name){
 	m_grade = grade;
 }
 
-/**+
+/**
  * @brief 
  * 
  * check that objects do not share the same address, 
@@ -100,7 +100,7 @@ void Bureaucrat::signAForm(AForm& AForm)
 }
 /**
  * @brief executeForm has an extra try and catch block, technically not needed due to how 
- * the flow was structured to throw to main and write success message immidatley after success.
+ * the flow was structured to throw to main and write fail message immidatley after fail.
  * Due to project guidlines, a try and catch has been implemented. 
  * 
  * @note can evaluator explain the purpose of this structure to me over alternative?

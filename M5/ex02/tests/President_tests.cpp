@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   President_tests.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:35:18 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/20 15:45:18 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/07 12:02:20 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,15 @@
 #include "PresidentialPardonForm.hpp"
 //#include "RobotomyRequestForm.hpp"
 /**
- * @brief adjusted for abstract class , can not instantiate Aform
+ * @brief 
  * 
  */
 void testinitilizationPresident()
 {
  	std::cout<< GREEN "-----START OF AForm President INITLIZATION-------" RESET <<std::endl;
-	/*try {	
-		AForm A2 = AForm("A2 grade to execute too low", 1, 0);
-	} catch(const std::exception& e) {
-		std::cerr << e.what() << '\n';
-	}*/	
 	try	{	
 		PresidentialPardonForm A1;
-		PresidentialPardonForm A2 = PresidentialPardonForm("Home");
+		PresidentialPardonForm A2 = PresidentialPardonForm("A person");
 	 	std::cout<< GREEN "-----START OF AForm copy-------" RESET <<std::endl;
 		std::cout<<A1<<std::endl;
 		A1 = A2;
@@ -41,12 +36,13 @@ void testinitilizationPresident()
 	}
 	std::cout<< GREEN "-----END OF AForm President INITLIZATION-------" RESET <<std::endl;
 }
+
 void testUnsignablePresident()
 {
 	std::cout<< GREEN "-----START OF AForm SIGNING FAIL TESTING-------" RESET <<std::endl;	
 	try {
 		Bureaucrat bob = Bureaucrat("bob grade too low(150)", 150);
-		PresidentialPardonForm A2 = PresidentialPardonForm("Home");
+		PresidentialPardonForm A2 = PresidentialPardonForm("A person");
 		std::cout<<A2<<std::endl;
 		bob.signAForm(A2);
 		bob.executeForm(A2);
@@ -57,7 +53,7 @@ void testUnsignablePresident()
 	try {
 		std::cout<< GREEN "-----START OF AForm EXECUTION FAIL TESTING-------" RESET <<std::endl;	
 		Bureaucrat bob = Bureaucrat("bob grade too low(6)", 6);
-		PresidentialPardonForm A2 = PresidentialPardonForm("Home");
+		PresidentialPardonForm A2 = PresidentialPardonForm("A person");
 		std::cout<<A2<<std::endl;
 		bob.signAForm(A2);
 		bob.executeForm(A2);
@@ -74,7 +70,7 @@ void showWorkingPresident()
 	std::cout<< GREEN "-----SART OF AForm SHOW WORKING TESTING-------" RESET <<std::endl;
 	try {
 		Bureaucrat bob = Bureaucrat("bob", 1);
-		PresidentialPardonForm A2 = PresidentialPardonForm("Home");
+		PresidentialPardonForm A2 = PresidentialPardonForm("A person");
 		std::cout<<A2<<std::endl;
 		bob.signAForm(A2);
 		std::cout<<A2<<std::endl;
@@ -88,13 +84,12 @@ void showWorkingPresident()
 
 void President_tests()
 {
-	//president tests
 	try {
 		testinitilizationPresident();	
 		testUnsignablePresident();
 		showWorkingPresident();
 	} catch(const std::exception& e) {
-		std::cerr << "Something caught in runAtests "<<e.what() << '\n';
+		std::cerr << "Something caught in runFtests "<<e.what() << '\n';
 	}
 
 }

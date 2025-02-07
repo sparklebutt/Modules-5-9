@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 14:57:56 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/21 13:48:22 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/07 11:27:52 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 #include "ShrubberyCreationForm.hpp"
 #include "Intern.hpp"
 
+/**
+ * runBtests = are same tests as ex00, now showing that Bureaucrat still works
+ * 
+ * runFtests = form_tests on form
+ */
 int	main()
 {
 	/*try {
@@ -37,11 +42,11 @@ int	main()
 	}*/
 	/*try
 	{
-		Shrubberry_tests();
+		Shrubbery_tests();
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr <<"Shrubbery Exceptions caught in main "<< e.what() << '\n';
 	}*/
 	try
 	{

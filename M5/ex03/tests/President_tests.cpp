@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   President_tests.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 15:35:18 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/21 13:50:41 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/07 10:56:19 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void President_tests()
 		testUnsignablePresident();
 		showWorkingPresident();
 	} catch(const std::exception& e) {
-		std::cerr << "Something caught in runAtests "<<e.what() << '\n';
+		std::cerr << "Something caught in runFtests "<<e.what() << '\n';
 	}
 
 }

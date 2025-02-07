@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+         #
+#    By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 14:46:35 by shaboom           #+#    #+#              #
-#    Updated: 2025/01/21 12:31:07 by shaboom          ###   ########.fr        #
+#    Updated: 2025/02/07 12:18:14 by araveala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,17 +16,17 @@ INCS = incs
 CPPFILES = $(wildcard $(SRC_DIR)/*.cpp) $(wildcard $(TEST_DIR)/*.cpp)
 HPPFILES = $(wildcard $(INCS)/*.hpp)
 CPP = c++
-CPPFLAGS = -I$(SRC_DIR) -I$(INCS) -Werror -Wextra -Wall -Wshadow -Wno-shadow -std=c++11 -MMD -MP
-
+CPPFLAGS = -I$(SRC_DIR) -I$(INCS) -Werror -Wextra -Wall -Wshadow -std=c++11 -MMD -MP
+#-Wshadow shows error when variables share a name that have shared scope . -Wno-shadow tunrs off warnings for -Wshadow
 BUILDDIR = buildofiles/
 OFILES = $(addprefix $(BUILDDIR), $(notdir $(CPPFILES:.cpp=.o)))
 DEPFILES = $(OFILES:.o=.d)
-EXEC = Bureaucrat
+EXEC = AForm
 
 
 all: $(BUILDDIR) $(EXEC)
 
-$(BUILDDIR)%.o: $(SRC_DIR)/%.cpp #$(TEST_DIR)/%.cpp
+$(BUILDDIR)%.o: $(SRC_DIR)/%.cpp
 	$(CPP) $(CPPFLAGS) -g -c $< -o $@
 
 $(BUILDDIR)%.o: $(TEST_DIR)/%.cpp

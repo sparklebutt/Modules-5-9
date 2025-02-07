@@ -35,10 +35,8 @@ class Bureaucrat;
  * therefore , the only useful reason for them to have 1, is if we must cleanup 
  * eg, dynamically alloacted data.
  * 
- * @note If we had more freedoms for this project i would have added a 3rd private memeber
- * . A boolean to indicate if said object is a copy or not, instead of changing the const
- * string to have "_copy". This is just for clarity for you the evaluator .
- * 
+ * AForm has been made abstract with the use of virtual void execute() = 0, this ensure thats derived classes
+ * must utalize their own implementation.  
  */
 class AForm
 {
@@ -66,7 +64,6 @@ class AForm
 
 		virtual void execute(Bureaucrat const & executor) const = 0;
 		void confirmExecution(Bureaucrat const & executor) const;
-
 
 		class GradeTooHighException : public std::runtime_error {
 			public:

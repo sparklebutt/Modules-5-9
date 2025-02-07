@@ -22,7 +22,7 @@
  * be protective to inherit virtually . 
  * 
  */
-class RobotomyRequestForm : public AForm
+class	RobotomyRequestForm : public AForm
 {
 	public:
 		RobotomyRequestForm ();
@@ -30,6 +30,5 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm (const RobotomyRequestForm& other);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 		~RobotomyRequestForm ();
-		void execute(Bureaucrat const & executor) const override;
-
+		void	execute(Bureaucrat const & executor) const override;
 };

@@ -3,16 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   tests.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:31:28 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/21 13:49:20 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/07 15:05:14 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+
+/**
+ * @example valid form request syntax
+ * 	"robotomy request",
+	"presidential request",
+	"shrubbery creation"
+ */
+
+const  std::string formType = "robotomy request";
+const std::string name = "bender";
+
 
 void	testInitilization(Bureaucrat& test);
 void	testIncrement(Bureaucrat& test, int flag);
@@ -36,7 +47,7 @@ void	showWorkingRobot();
 void	showWorkingPresident();
 void	showWorkingIntern();
 
-void	Shrubberry_tests();
+void	Shrubbery_tests();
 void	Robot_tests();
 void	President_tests();
 void	Intern_tests();

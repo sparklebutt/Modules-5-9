@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:40:05 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/23 12:41:49 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/06 11:41:36 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Whatever.hpp"
 #include <iostream>
+//fail testing libs
+#include <type_traits>
+#include <memory>
 
 int main( void )
 {
@@ -20,7 +23,7 @@ int main( void )
 	<<"max(a, b) = 3 \n"
 	<<"c = chaine2, d = chaine1 \n"
 	<<"min(c, d) = chaine1 \n"
-	<<"max(c, d) = chaine2 \n-------------------\n";
+	<<"max(c, d) = chaine2 \n-------------------\n----running tests----------\n";
 	
 	int a = 2;
 	int b = 3;
@@ -48,8 +51,11 @@ int main( void )
 	std::cout << "min( g, h ) = " << ::min( g, h ) << std::endl;
 	std::cout << "max( g, h ) = " << ::max( g, h ) << std::endl;
 	std::cout << "----fail test-----\n";
-	customFail test1{1};
-	customFail test2{2};
+	//std::unique_ptr<int> ptr1(new int(1));
+	//std::unique_ptr<int> ptr2(new int(2));
+	//::swap(ptr1, ptr2);
+	//customFail test1{1};
+	//customFail test2{2};
 	return 0;
 }
 

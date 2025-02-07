@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:26:20 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/20 12:16:30 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/07 12:17:29 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
-//#include "PresidentialPardonForm.hpp"
 
 #define RESET "\033[0m"
 #define RED "\033[31m"
@@ -28,19 +27,21 @@
  * therefore , the only useful reason for them to have 1, is if we must cleanup 
  * eg, dynamically alloacted data.
  * 
- * @note If we had more freedoms for this project i would have added a 3rd private memeber
- * . A boolean to indicate if said object is a copy or not, instead of changing the const
- * string to have "_copy". This is just for clarity for you the evaluator .
+ * Here we have added forward decleration "class Form;", instead of inclusion of "Form.hpp".
+ * This hastens compilation time due to not having to read through the header file during compile.
+ * Now the signForm will only utalize what it needs
+ * 
+ * @note For this project i am changing value of a const string just to give clarity for testing.
+ * Otherwise the chosen aternaitive would be to add a boolean if expression (if copy) was required
+ * to indicate if object is a copy or not.
  * 
  */
 class AForm;
-//class PresidentialPardonForm;
-
 class Bureaucrat
 {
 	private:
-		int m_grade;
-		const std::string m_name;	
+		int		m_grade;
+		const	std::string m_name;	
 	public:
 		Bureaucrat();
 		Bureaucrat(const Bureaucrat &other);
@@ -49,22 +50,22 @@ class Bureaucrat
 
 		Bureaucrat(const std::string name, int grade);
 
-		const std::string getName() const;
-		int getGrade() const;
-	//testing helper
-		void setGrade(int value);
+		const	std::string getName() const;
+		int		getGrade() const;
 		
-		void increaseGrade();
-		void decreaseGrade();
+		void	setGrade(int value);
 		
-		void signAForm(AForm& AForm);
-		void executeForm(AForm const & form);
+		void	increaseGrade();
+		void	decreaseGrade();
 		
-		class GradeTooHighException : public std::runtime_error {
+		void	signAForm(AForm& AForm);
+		void	executeForm(AForm const & form);
+		
+		class	GradeTooHighException : public std::runtime_error {
 			public:
 				GradeTooHighException(const std::string context = "");
 		};
-		class GradeTooLowException : public std::runtime_error {
+		class	GradeTooLowException : public std::runtime_error {
 			public:	
 				GradeTooLowException(const std::string context = "");
 		};

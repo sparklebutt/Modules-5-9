@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:10:08 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/23 15:06:41 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/06 11:50:50 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "iter.hpp"
-
+#include <string>
 int test1(int num)
 {
 	return num + 1;
@@ -56,16 +56,16 @@ int main()
 {
 	int array1[] {1, 2, 3, 4, 5};
 	for (int i = 0; i < 5; i++)
-		std::cout<<"old array elem = "<<array1[i]<<std::endl;
+		std::cout<<"show old array elem = "<<array1[i]<<std::endl;
 	::iter(array1, 5, test1);
 	for (int i = 0; i < 5; i++)
-		std::cout<<"new array elem = "<<array1[i]<<std::endl;
+		std::cout<<"show after iter fucn(ret num + 1) new array elem = "<<array1[i]<<std::endl;
 	std::string array2[] {"aa", "bb", "cc", "dd", "ee"};
 	for (int i = 0; i < 5; i++)
-		std::cout<<"old array string elem = "<<array2[i]<<std::endl;
+		std::cout<<"show old array string elem = "<<array2[i]<<std::endl;
 	::iter(array2, 5, test2);
 	for (int i = 0; i < 5; i++)
-		std::cout<<"new array string elem = "<<array2[i]<<std::endl;
+		std::cout<<"show after iter (string + done) new array string elem = "<<array2[i]<<std::endl;
 
 	Data array3[] {{1, false, "welcome"},
 	{1, false, "welcome"},

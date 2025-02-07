@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:29:45 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/20 16:00:31 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/07 12:22:55 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : m_name(name){
 	m_grade = grade;
 }
 
-/**+
+/**
  * @brief 
  * 
  * check that objects do not share the same address, 

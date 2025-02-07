@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:20:18 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/20 12:55:53 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/06 14:40:12 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * be protective to inherit virtually . 
  * 
  */
-class PresidentialPardonForm : public AForm
+class	PresidentialPardonForm : public AForm
 {
 	public:
 		PresidentialPardonForm ();
@@ -27,6 +27,5 @@ class PresidentialPardonForm : public AForm
 		PresidentialPardonForm (const PresidentialPardonForm& other);
 		PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
 		~PresidentialPardonForm ();
-		void execute(Bureaucrat const & executor) const override;
-
+		void	execute(Bureaucrat const & executor) const override;
 };

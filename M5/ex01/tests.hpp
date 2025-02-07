@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tests.hpp                               :+:      :+:    :+:   */
+/*   tests.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:31:28 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/17 14:32:49 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/07 11:18:25 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include "Bureaucrat.hpp"
-#include "AForm.hpp"
 
 void	testInitilization(Bureaucrat& test);
 void	testIncrement(Bureaucrat& test, int flag);
 void	showWorking(Bureaucrat& test, int flag);
 void	runBtests();
 
-void testUnsignable();
-void testinitilization2();
-void runAtests();
-void showWorking2();
+void	testUnsignable();
+void	testinitilization2();
+void	runFtests();
+void	showWorking2();

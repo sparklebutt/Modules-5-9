@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:29:45 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/16 17:35:11 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/06 13:26:26 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Bureaucrat::Bureaucrat() : m_grade(150), m_name("DEFAULT"){
 	std::cout<<CYAN "Constructor called for " RESET <<m_name<<std::endl;
-} // m_grade(0), m_name("steve") 
+} 
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) {
 	*this = other;
@@ -28,16 +28,14 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : m_name(name){
 	if (grade > 150)
 		throw GradeTooHighException("thrown from parameterized constructor ");
 	m_grade = grade;
-	//std::swap(const_cast<std::string&>(m_name), const_cast<std::string&>(name));
-	//m_name = name;
 }
 
-/**+
+/**
  * @brief 
  * 
  * check that objects do not share the same address, 
  * assign others name with a copy marker and assign others grade. 
- * @param other from whcih to copy from 
+ * @param other from which to copy from 
  * @return Bureaucrat& as either changed or already correctly assigned
  */
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other) {
@@ -45,7 +43,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other) {
 	{
 		std::string swapstr = other.m_name + "_copy";
 		std::swap(const_cast<std::string&>(m_name), const_cast<std::string&>(swapstr));
-		//this->m_name = other.m_name;//swapstr;//other.m_name + "_copy";
 		this->m_grade = other.m_grade;
 
 	}
@@ -56,12 +53,12 @@ Bureaucrat::~Bureaucrat() {
 	std::cout<< RED "Deconstructor called for " RESET << m_name <<std::endl;
 }
 
-const std::string Bureaucrat::getName() const{
+const	std::string Bureaucrat::getName() const{
 
 	return this->m_name;
 }
 
-int Bureaucrat::getGrade() const {
+int		Bureaucrat::getGrade() const {
 
 	return this->m_grade;
 }
@@ -70,7 +67,7 @@ int Bureaucrat::getGrade() const {
  * @brief setter used for testing help
  *  
  */
-void Bureaucrat::setGrade(int value) {
+void	Bureaucrat::setGrade(int value) {
 
 	this->m_grade = value;
 }
@@ -80,12 +77,12 @@ void Bureaucrat::setGrade(int value) {
  * 150 and thus will be plus.
  * 
  */
-void Bureaucrat::increaseGrade() {
+void	Bureaucrat::increaseGrade() {
 	if (m_grade == 1)
 		throw GradeTooHighException("bureucrat " + getName() + " grade already max, increasing will lead to ");
 	m_grade--;
 }
-void Bureaucrat::decreaseGrade() {
+void	Bureaucrat::decreaseGrade() {
 	if (m_grade == 150)
 		throw GradeTooLowException("bureucrat " + getName() + " grade already min, decreasing will lead to ");
 	m_grade++;

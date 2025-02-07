@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:26:20 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/21 12:37:08 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/07 13:14:00 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ class AForm;
 class Bureaucrat
 {
 	private:
-		int m_grade;
-		const std::string m_name;	
+		int		m_grade;
+		const	std::string m_name;	
 	public:
 		Bureaucrat();
 		Bureaucrat(const Bureaucrat &other);
@@ -47,22 +47,22 @@ class Bureaucrat
 
 		Bureaucrat(const std::string name, int grade);
 
-		const std::string getName() const;
-		int getGrade() const;
-	//testing helper
-		void setGrade(int value);
+		const	std::string getName() const;
+		int		getGrade() const;
+
+		void	setGrade(int value);
 		
-		void increaseGrade();
-		void decreaseGrade();
+		void	increaseGrade();
+		void	decreaseGrade();
 		
-		void signAForm(AForm& AForm);
-		void executeForm(AForm const & form);
+		void	signAForm(AForm& AForm);
+		void	executeForm(AForm const & form);
 		
-		class GradeTooHighException : public std::runtime_error {
+		class	GradeTooHighException : public std::runtime_error {
 			public:
 				GradeTooHighException(const std::string context = "");
 		};
-		class GradeTooLowException : public std::runtime_error {
+		class	GradeTooLowException : public std::runtime_error {
 			public:	
 				GradeTooLowException(const std::string context = "");
 		};

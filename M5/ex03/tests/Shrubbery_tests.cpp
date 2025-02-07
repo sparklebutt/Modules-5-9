@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Shrubbery_tests.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:10:34 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/20 18:35:01 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/07 11:27:52 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void showWorkingShrubbery()
 	std::cout<< GREEN "-----END OF AForm SHOW WORKING TESTING-------" RESET <<std::endl;
 }
 
-void Shrubberry_tests()
+void Shrubbery_tests()
 {
 	try {
 		testinitilizationShrubbery();	

@@ -3,20 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+         #
+#    By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 14:46:35 by shaboom           #+#    #+#              #
-#    Updated: 2025/01/17 16:59:05 by shaboom          ###   ########.fr        #
+#    Updated: 2025/02/07 12:21:08 by araveala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CPP = c++
-CPPFLAGS = -Werror -Wextra -Wall -Wshadow -Wno-shadow -std=c++11 -MMD -MP
-CPPFILES = main.cpp Bureaucrat.cpp AForm.cpp bureaucrat_tests.cpp AForm_tests.cpp
-
+CPPFLAGS = -Werror -Wextra -Wall -Wshadow -std=c++11 -MMD -MP
+CPPFILES = main.cpp Bureaucrat.cpp Form.cpp bureaucrat_tests.cpp form_tests.cpp
+#-Wshadow shows error when variables share a name that have shared scope . -Wno-shadow tunrs off warnings for -Wshadow
 BUILDDIR = buildofiles/
 OFILES = $(addprefix $(BUILDDIR), $(CPPFILES:.cpp=.o))
-EXEC = Bureaucrat
+EXEC = Form
 
 DEPFILES = $(OFILES:.o=.d)
 

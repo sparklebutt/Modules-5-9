@@ -20,7 +20,7 @@
  * be protective to inherit virtually . 
  * 
  */
-class ShrubberyCreationForm : public AForm
+class	ShrubberyCreationForm : public AForm
 {
 	public:
 		ShrubberyCreationForm ();
@@ -28,6 +28,5 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm (const ShrubberyCreationForm& other);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 		~ShrubberyCreationForm ();
-		void execute(Bureaucrat const & executor) const override;
-
+		void	execute(Bureaucrat const & executor) const override;
 };

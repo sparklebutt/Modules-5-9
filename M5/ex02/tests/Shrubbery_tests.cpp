@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Shrubbery_tests.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:10:34 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/20 18:35:01 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/07 11:35:12 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
-#include "tests.hpp"
+//#include "tests.hpp"
 
 void testinitilizationShrubbery()
 {
@@ -31,6 +31,7 @@ void testinitilizationShrubbery()
 	}
 	std::cout<< GREEN "-----END OF AForm Shruberry INITLIZATION-------" RESET <<std::endl;
 }
+
 void testUnsignableShrubbery()
 {
 	std::cout<< GREEN "-----START OF AForm Shruberry SIGNING FAIL TESTING-------" RESET <<std::endl;	
@@ -52,7 +53,6 @@ void testUnsignableShrubbery()
 		std::cout<<A2<<std::endl;
 		bob.signAForm(A2);
 		steve.executeForm(A2);
-		//bob.executeForm(A2);
 	} catch(const std::exception& e) {
 		std::cerr << "Exception caught in tests 2" << '\n';
 		std::cout<< GREEN "-----END OF AForm Shruberry EXECUTION FAIL TESTING-------" RESET <<std::endl;
@@ -75,7 +75,7 @@ void showWorkingShrubbery()
 	std::cout<< GREEN "-----END OF AForm SHOW WORKING TESTING-------" RESET <<std::endl;
 }
 
-void Shrubberry_tests()
+void Shrubbery_tests()
 {
 	try {
 		testinitilizationShrubbery();	

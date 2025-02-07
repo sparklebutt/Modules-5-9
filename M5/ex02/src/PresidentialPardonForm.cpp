@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:26:12 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/20 13:45:23 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/06 16:03:37 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,4 @@ PresidentialPardonForm::~PresidentialPardonForm () {
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
 	(void)executor;
 	std::cout<< getTarget()<<" has been pardoned by Zaphod Beeblebrox \n";
-
 }

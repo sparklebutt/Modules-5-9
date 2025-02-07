@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:29:45 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/17 16:59:05 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/06 13:25:33 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : m_grade(150), m_name("DEFAULT"){
 	std::cout<<CYAN "Constructor called for " RESET <<m_name<<std::endl;
@@ -20,7 +20,7 @@ Bureaucrat::Bureaucrat() : m_grade(150), m_name("DEFAULT"){
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : m_grade(other.m_grade), m_name(other.m_name) {
 }
 
-Bureaucrat::Bureaucrat(const std::string name, int grade) : m_name(name){
+Bureaucrat::Bureaucrat(const std::string name, int grade) : m_name(name) {
 
 	std::cout<<CYAN "Constructor called for " RESET <<m_name<<std::endl;
 	if (grade < 1)
@@ -30,12 +30,12 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : m_name(name){
 	m_grade = grade;
 }
 
-/**+
+/**
  * @brief 
  * 
  * check that objects do not share the same address, 
  * assign others name with a copy marker and assign others grade. 
- * @param other from whcih to copy from 
+ * @param other from which to copy from 
  * @return Bureaucrat& as either changed or already correctly assigned
  */
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other) {
@@ -53,11 +53,11 @@ Bureaucrat::~Bureaucrat() {
 	std::cout<< RED "Deconstructor called for " RESET << m_name <<std::endl;
 }
 
-const std::string Bureaucrat::getName() const{
+const	std::string Bureaucrat::getName() const{
 	return this->m_name;
 }
 
-int Bureaucrat::getGrade() const {
+int		Bureaucrat::getGrade() const {
 	return this->m_grade;
 }
 
@@ -65,7 +65,7 @@ int Bureaucrat::getGrade() const {
  * @brief setter used for testing help
  *  
  */
-void Bureaucrat::setGrade(int value) {
+void	Bureaucrat::setGrade(int value) {
 	this->m_grade = value;
 }
 /**
@@ -74,30 +74,28 @@ void Bureaucrat::setGrade(int value) {
  * 150 and thus will be plus.
  * 
  */
-void Bureaucrat::increaseGrade() {
+void	Bureaucrat::increaseGrade() {
 	if (m_grade == 1)
 		throw GradeTooHighException("bureucrat " + getName() + " grade already max, increasing will lead to ");
 	m_grade--;
 }
-void Bureaucrat::decreaseGrade() {
+void	Bureaucrat::decreaseGrade() {
 	if (m_grade == 150)
 		throw GradeTooLowException("bureucrat " + getName() + " grade already min, decreasing will lead to ");
 	m_grade++;
 }
 
-void Bureaucrat::signAForm(AForm& AForm)
-{
+void	Bureaucrat::signForm(Form& Form) {
 	try
 	{
-		AForm.beSigned(*this);
-		std::cout<<getName() << " signed " << AForm.getName()<<std::endl;
-	}
-	catch(const AForm::GradeTooLowException& e)
-	{
+		Form.beSigned(*this);
+		std::cout<<getName() << " signed " << Form.getName()<<std::endl;
+	} catch(const Form::GradeTooLowException& e) {
 		std::cerr <<getName()<<e.what() << '\n';
 		throw ;
 	}
 }
+
 Bureaucrat::GradeTooHighException::GradeTooHighException(const std::string context)
 	 : std::runtime_error(context.empty() ? RED "grade too high!" RESET : context + RED ": grade too high!" RESET)  {}
 	 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bureaucrat_tests.cpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 14:29:59 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/17 16:59:05 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/06 15:01:33 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@
  * Forcing grade values too high and low and showing exception functionality 
  * 
  * @param test an object Bureaucrat
- * @example  catch(const Bureaucrat::GradeTooHighException& e) {
-		std::cerr << "caught exception in main :: " <<e.what() << '\n';
-	} catch(const Bureaucrat::GradeTooLowException& e) {
-		std::cerr << "caught exception in main :: " <<e.what()<< '\n';
-	}
  */
 void	testInitilization(Bureaucrat& test)
 {
@@ -46,8 +41,8 @@ void	testInitilization(Bureaucrat& test)
  * forcing incremenation to cause too high or too low results and showing exception functionality
  * 
  * @param test an object_copy of  Bureaucrat
- * @param flag indicator give different behaviour based on if we send a default object 
- * to copy or if we need to set existing objects values for testing
+ * @param flag indicates if we are sending a default object (values not initialized), or object with values
+ * initialized. if 0 copy constructor inits values to test. (showing copy constructor working as intended)
  */
 void	testIncrement(Bureaucrat& test, int flag)
 {
@@ -109,6 +104,10 @@ void showWorking(Bureaucrat& test, int flag)
 
 	}
 }
+
+/**
+ * @example 	AForm A2; compiler error, can not be instantiated
+ */
 void runBtests()
 {
 	Bureaucrat steve; 
@@ -134,6 +133,5 @@ void runBtests()
 	} catch(const std::exception& e) {
 		std::cerr <<"Something went wrong::"<< e.what() << '\n';
 	}
-	//steve.increaseGrade(); // will abort because its outside a try and catch block, exception will cause abort
-	//AForm A2;
+
 }

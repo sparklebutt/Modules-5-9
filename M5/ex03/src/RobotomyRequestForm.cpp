@@ -35,15 +35,15 @@ RobotomyRequestForm::~RobotomyRequestForm () {
 	std::cout<<getName()<< RED " destroyed" RESET << std::endl;
 }
 
+/**
+ * rand() % 2 does not give a very accurate 50/50 untill you have run it multiple times, 
+ * A toggle bool option is a posibility but we loose the excitement of randomnes. 
+ */
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
-	(void)executor;
-	std::cout<< getTarget()<<"prrrrrzrzrzrzrzrzrzrrzrz zzzziiiu zzziiiu, ppppprrrrrrrrt ziiiu\n";
-	static bool toggle = false;
-	//std::cout<<(rand() % 2)<<std::endl;
-	//if (rand() % 2 == 0)
-	if (toggle)
+	std::cout<< executor.getName()<<" points drill at "<<getTarget()<<" prrrrrzrzrzrzrzrzrzrrzrz zzzziiiu zzziiiu, ppppprrrrrrrrt ziiiu\n";
+	if (rand() % 2 == 0)
 		std::cout<<getTarget()<< BLUE " has been robotomized \n" RESET;
 	else
-		std::cout<<getTarget()<< MAGENTA " robotomy unsuccsessfull \n" RESET;
-	toggle = !toggle;
+		std::cout<< MAGENTA " robotomy unsuccsessfull \n" RESET;
 }
+

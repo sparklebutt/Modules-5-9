@@ -48,8 +48,7 @@ AForm::AForm(const std::string name, std::string target, int gradeToSign, int gr
 	std::cout<<CYAN "AForm Constructor called for " RESET <<m_name<<std::endl;
 }
 
-int AForm::checkGrade(int grade)
-{
+int AForm::checkGrade(int grade) {
 	if (grade < 1)
 		throw GradeTooLowException("AForm:: checkGrade ");
 	if (grade > 150)

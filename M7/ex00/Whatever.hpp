@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:45:18 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/23 12:38:18 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/06 11:41:18 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@
  */
 template<typename T>
 void swap(T &a, T &b) {
-	static_assert(std::is_copy_assignable<T>::value, "Type must be copy assignable.");
+	static_assert(std::is_copy_assignable<T>::value, 
+				"*****************HELOO SEE A PERSONAL MESSAGE Type must be copy assignable.");
 	T temp = a;
 	a = b;
 	b = temp;
