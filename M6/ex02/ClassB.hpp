@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ClassB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 19:05:38 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/22 19:15:37 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/12 16:31:40 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include "Base.hpp"
 
-class ClassB : public Base
-{
+class ClassB : public Base {
 	
 };

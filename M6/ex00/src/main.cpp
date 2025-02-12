@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:03:05 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/22 14:13:56 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:30:38 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,24 @@
 // note that if you send only * not '*' , programme will assume
 // you are sending in all files in directory
 
+/*void handlePseudoLiterals(double value) {
+    if (value == std::numeric_limits<double>::infinity()) {
+        std::cout << "Positive infinity" << std::endl;
+    } else if (value == -std::numeric_limits<double>::infinity()) {
+        std::cout << "Negative infinity" << std::endl;
+    } else if (std::isnan(value)) {
+        std::cout << "NaN (Not a Number)" << std::endl;
+    } else {
+        std::cout << "Regular number: " << value << std::endl;
+    */
+
+   /*
+	for testing i guess 
+    std::string input1 = "1e309";      // Positive infinity
+    std::string input2 = "-1e309";     // Negative infinity
+    std::string input3 = "invalid";    // NaN
+    std::string input4 = "42.0"
+   */
 int main(int argc, char **argv)
 {
 
@@ -25,6 +43,7 @@ int main(int argc, char **argv)
 		return 1;
 		
 	}
+	//ScalarConverter steve = ScalarConverter();
 	std::cout<<"start\n";
 	try
 	{

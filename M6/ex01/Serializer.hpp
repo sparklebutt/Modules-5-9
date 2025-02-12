@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 18:11:31 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/22 18:38:31 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/12 16:31:17 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-//#include <cmath>
 #include <cstdint>
 #include "data.hpp"
 #include <iostream>
