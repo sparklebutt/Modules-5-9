@@ -6,13 +6,22 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:07:00 by shaboom           #+#    #+#             */
-/*   Updated: 2025/02/12 16:22:17 by araveala         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:57:53 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "converterUtils.hpp"
-//#include "ScalarConverter.hpp"
+#include <iostream>
+#include <stdexcept>
+#include <limits>
+#include <cctype> // isdigit, isprint
+#include <cmath> // double, float
+#include <iomanip> // set percision
 
+/**
+ * When input string given is forced as any below in if ("*") we know char and int to be impossible
+ * however we can convert the values to float and double, giving the same result, but they are converted.
+ */
 void	handleSpecialInput(std::string convertee)
 {
 	if (convertee == "-inff" || convertee == "+inff" || convertee == "nanf"|| 
@@ -29,6 +38,10 @@ void	handleSpecialInput(std::string convertee)
 	}
 }
 
+/**
+ * When all possible conversions run to an overflow, we manualy print inf, 
+ * we have reached the end of this codes scope. 
+ */
 void	printFullOverflow(std::string& convertee)
 {
 	if (convertee[0] == '-')
@@ -48,16 +61,16 @@ void	printFullOverflow(std::string& convertee)
 
 }
 /**
- * @brief tis is a union , a double can hold a float 
+ * @brief 
  * 
- * An oveflow of a float or double does not always mean an overflow inf int
- * @param value 
- * @param flt 
+ * If conversion to int succeeds, we check if value is a char in ascii range.
+ * setprecision is set to show 1 decimal place.
+ * We static_cast<> to float and double as value sent in is already a int. 
+ * @param int
  */
 
 void	handleDisplayValidation(int value)
 {
-	// to get 1 decimal point
 	std::cout << std::fixed << std::setprecision(1);
 	if (std::floor(value) == value && value >= 32 && value <= 126)
 		std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
@@ -69,12 +82,18 @@ void	handleDisplayValidation(int value)
 }
 
 /**
- * static_cast to float before comparing if int min or max ensure percision,
- * int value maybe rounded too 2147483647, conversion to float allows for 0.1 to be overflow.
+ ** @brief 
+ * 
+ * If conversion to float succeeds, we check if value is a char in ascii range.
+ * setprecision is set to show 1 decimal place.
+ * We static_cast<> to float and double as value sent in is already a int. 
+ * @param float 
+ * static_cast to float before comparing if int min or max to ensure percision,
+ * int value maybe rounded down from 2147483647.1, leading to inaccurate statement that
+ * value is not int overflow.
  */
 void	handleDisplayValidation(float value)
 {
-	// to get 1 decimal point
 	std::cout << std::fixed << std::setprecision(1);
 	if (std::floor(value) == value && value >= 32 && value <= 126)
 		std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
@@ -89,6 +108,18 @@ void	handleDisplayValidation(float value)
 	std::cout << "double: " << static_cast<double>(value) << std::endl;
 }
 
+
+/**
+ ** @brief 
+ * 
+ * If conversion to double succeeds, we check if value is a char in ascii range.
+ * setprecision is set to show 1 decimal place.
+ * We static_cast<> to int and double as value sent in is already a int. 
+ * @param float 
+ * static_cast to float before comparing if int min or max to ensure percision,
+ * int value maybe rounded down from 2147483647.1, leading to inaccurate statement that
+ * value is not int overflow.
+ */
 void	handleDisplayValidation(double value)
 {
 	std::cout << std::fixed << std::setprecision(1);
@@ -109,17 +140,22 @@ void	handleDisplayValidation(double value)
 int		establishInput(std::string convertee)
 {
 	int dot = 0; int f = 0; char prevChar = '\0'; 
+	if (convertee.back() == '.')
+		throw std::runtime_error("value can not end in a decimal");
 	for (char c : convertee)
 	{
 		bool signAtStart = ((c == '-' || c == '+') && c == convertee.front());
 		bool dotInMiddle = (c == '.' && c != convertee.back() && c != convertee.front()); 
 		bool floatValid = (c == 'f' && c == convertee.back() && isdigit(prevChar));		
-		dot += dotInMiddle; // bool is 0 or 1, so if true we add a dot.
-		f += floatValid; // dont know if i need this 
+		dot += dotInMiddle;
+		f += floatValid;
 		prevChar = c;
-		if (((!std::isdigit(c)) && !signAtStart && !dotInMiddle && !floatValid) 
-		|| (dot > 1 || (floatValid && dot == 0))) // could have a better error message fucntion here 
-			throw std::runtime_error("not a valid input");	
+		if (dot > 1)
+			throw std::runtime_error("only 1 decimal allowed");
+		if (floatValid && dot == 0)	
+			throw std::runtime_error("float must have a decimal");
+		if ((!std::isdigit(c)) && !signAtStart && !dotInMiddle && !floatValid)
+			throw std::runtime_error("not a valid input, only 1 char at a time or a numeric value");
 	}
 	if (dot > 0)
 		return f > 0 ? 2 : 1;

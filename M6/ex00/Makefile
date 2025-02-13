@@ -6,11 +6,10 @@
 #    By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/21 15:31:59 by shaboom           #+#    #+#              #
-#    Updated: 2025/02/11 15:49:02 by araveala         ###   ########.fr        #
+#    Updated: 2025/02/13 13:37:54 by araveala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#TEST_DIR = tests
 SRC_DIR = src
 INCS = incs
 CPPFILES = 	$(SRC_DIR)/converterUtils.cpp\
@@ -28,7 +27,7 @@ DEPFILES = $(OFILES:.o=.d)
 NAME = convert
 
 
-all: $(BUILDDIR) $(NAME)
+all: $(NAME)
 
 $(BUILDDIR)%.o: $(SRC_DIR)/%.cpp
 	$(CPP) $(CPPFLAGS) -g -c $< -o $@

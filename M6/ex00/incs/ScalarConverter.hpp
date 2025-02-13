@@ -3,21 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 15:32:14 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/22 15:05:05 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/13 12:02:19 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <string>
-#include <iostream>
-#include <iomanip>
-#include <exception>
-#include <limits>
-#include <cctype>
-#include <cmath>
+
 /**
  * @brief since this is a utility class, needs to not be insatiatable , we make
  * the constructor private. Utility classes are classes that are used to preform

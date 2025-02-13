@@ -6,14 +6,12 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 16:06:15 by shaboom           #+#    #+#             */
-/*   Updated: 2025/02/12 16:03:37 by araveala         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:02:27 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include "ScalarConverter.hpp"
-
-
+#include <string>
 
 void	convertChar(std::string convertee);
 

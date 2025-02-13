@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 18:57:32 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/22 19:55:58 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/02/13 14:53:09 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
+#include <iostream>
 
 Base::~Base() {
-	std::cout<<"what the shizz we doing\n";
+	std::cout<<"testing virtual destructor\n";
 }
