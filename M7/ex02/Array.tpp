@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:11:32 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/24 11:47:06 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:48:24 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,33 @@
 #pragma once
 #include "Array.hpp"
 
+/**
+ * instantiation of a class automatically allocates to stack, initializing a ptr to nullptr, means that accessing that 
+ * pointer is accessing allocated memeory, unitialized however, we would potentially
+ * be accessing non-allocated data. 
+ */
+// programme must never access non allocated memory must i allocate here too 
 template <typename T>
-Array<T>::Array() : m_elements(nullptr), m_elementCount(0){
-	std::cout<<"default constructor called \n";
-}
+Array<T>::Array() : m_elements(nullptr), m_elementCount(0){ }
 
+//se daultf here to cover all te ground
 template <typename T>
-Array<T>::Array(unsigned int n) : m_elements(nullptr), m_elementCount(0){
-	std::cout<<"constructor called \n";
-	if (n > 0)
+Array<T>::Array(unsigned int n) : m_elements(nullptr), m_elementCount(n){
+	//std::cout<<"constructor called "<<n<<"\n";
+// do i need this check? because we nullptr
+	if (n == 0)
+	{
+		std::cout<<"eek"<<std::endl;
+	}
+	else
 	{
 		m_elements = new T[n];
 		m_elementCount = n;
+		for (unsigned int i = 0; i < n; i++)
+		{
+			m_elements[i] = 0;
+			//std::cout<<"elem val at "<<i<<" "<<m_elements[i]<<std::endl;			
+		}
 		//w *this.m_elements[other.elementCount];
 	}
 }
@@ -36,8 +51,11 @@ Array<T>::Array(const Array &other) : Array() {
 	{
 		m_elements = new T[other.m_elementCount];
 		//w *this.m_elements[other.elementCount];		
-		for (std::size_t i = 0; i < other.m_elementCount; i++)
-			m_elements[i] = other.m_elements[i];
+		for (unsigned int i = 0; i < other.m_elementCount; i++)
+		{
+			m_elements[i] = other.m_elements[i];			
+		}
+
 	}
 	m_elementCount = other.m_elementCount;
 }
@@ -46,13 +64,13 @@ template <typename T>
 Array<T>& Array<T>::operator=(const Array &other) {
 	if (this != &other)
 	{
-		if (*this.m_elements != nullptr)
-			delete [] *this.m_elements;
+		if (*this != nullptr)
+			delete [] *this;
 		if (other.m_elementCount > 0)
 		{
 			m_elements = new T[other.elementCount];
 			//w *this.m_elements[other.elementCount];		
-			for (std::size_t i = 0; i < other.m_elementCount; i++)
+			for (unsigned int i = 0; i < other.m_elementCount; i++)
 				m_elements[i] = other.m_elements[i];
 		}
 		else
@@ -66,7 +84,7 @@ Array<T>& Array<T>::operator=(const Array &other) {
 }
 
 template <typename T>
-T& Array<T>::operator[](std::size_t index)
+T& Array<T>::operator[](unsigned int index)
 {
 	if (index >= m_elementCount)
 		throw std::runtime_error("out of range ");
@@ -74,15 +92,16 @@ T& Array<T>::operator[](std::size_t index)
 }
 
 template <typename T>
-const T& Array<T>::operator[](std::size_t index) const 
+const T& Array<T>::operator[](unsigned int index) const 
 {
-	if (index >= m_elementCount)
+	//std::cout<<"what is index "<<index<<std::endl;
+	if (index > m_elementCount)
 		throw std::runtime_error("out of range ");
 	return m_elements[index];
 }
 
 template <typename T>
-std::size_t Array<T>::getSize() const {
+unsigned int Array<T>::getSize() const {
 	return m_elementCount;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:40:05 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/24 11:48:59 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/03/06 13:52:20 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,85 @@
 #include <iostream>
 #include "Array.hpp"
 
-#define MAX_VAL 750
-
+#define MAX_VAL 10
+#define RANGE 10
 /**
  * @brief helper fucntions for testing , if you want to look inside the arrays
  * 
  */
-void printArray(const Array<int>& arr, std::size_t size, const std::string& name) {
-    std::cout << name << " array values: ";
-    for (std::size_t i = 0; i < size; ++i) {
-        std::cout << arr[i] << " ";
-    }
-    std::cout << std::endl;
-}
-void printMirror(int* arr, std::size_t size, const std::string& name) {
-    std::cout << name << " array values: ";
-    for (std::size_t i = 0; i < size; ++i) {
-        std::cout << arr[i] << " ";
+void printArray(const Array<int>& arr, unsigned int size, const std::string& name) {
+    std::cout <<"size of array: " << name << " = " << size << " " << std::endl;
+	for (unsigned int i = 0; i < size; ++i) {
+		std::cout << " index i = " << i
+        << " with a value of = --" << arr[i] << "--\n";
     }
     std::cout << std::endl;
 }
 
-int main(int, char**)
+void printMirror(int* arr, unsigned int size, const std::string& name) {
+	std::cout <<"size of array: " << name << " = " << size << " " << std::endl;
+    for (std::size_t i = 0; i < size; ++i) {
+		std::cout << " index i = " << i
+        << " with a value of = --" << arr[i] << "--\n";
+    }
+    std::cout << std::endl;
+}
+
+void testFail()
+{
+	try	{
+		Array<int> empty;
+		printArray(empty, empty.getSize(), "empty");
+	} catch(const std::exception& e) {
+		std::cerr << "Test empty failed::" << '\n';
+		throw;
+	}
+	try	{
+		Array<int> numbers(-10);
+		printArray(numbers, numbers.getSize(), "numbers");	
+	} catch(const std::exception& e) {
+		std::cerr << "test instatiation with minus number failed::" << '\n';
+		throw;
+	}
+	// test 0 and overflow test also too large a number in array
+}
+
+void 	testBaisic()
+{
+	try	{
+		Array<int> numbers(10);
+		printArray(numbers, numbers.getSize(), "numbers");	
+	} catch(const std::exception& e) {
+		std::cerr << "test baisic values should not fail::" << '\n';
+		throw;
+	}
+
+}
+
+void testOutOfRange()
+{
+	Array<int> numbers(RANGE);
+	std::cout<<"\t------START out of range tests----\n";
+	try {
+		numbers[-2] = 0;
+	} catch(const std::exception& e) {
+		std::cerr <<"minus number " << e.what() << '\n';
+	}
+	try {
+		numbers[RANGE] = 0;
+	} catch(const std::exception& e) {
+		std::cerr << "RANGE ( if range = 10, indexing should be max 9 )"<<e.what() << '\n';
+	}
+	try {
+		numbers[RANGE] = RANGE + 1;
+	} catch(const std::exception& e) {
+		std::cerr << "RANGE + 1 "<<e.what() << '\n';
+	}
+	std::cout<<"\t------END out of range tests----\n\n";
+
+}
+
+void testCopys()
 {
 	std::cout<<"making array \n";		
 	Array<int> numbers(MAX_VAL);
@@ -60,52 +117,55 @@ int main(int, char**)
 		numbers[i] = value;
 		mirror[i] = value;
 	}
-//	printArray(numbers, MAX_VAL, "numbers");
-	//SCOPE
+	printArray(numbers, MAX_VAL, "numbers");
 	std::cout<<"\t------START copies tests----\n";
 	{
+		std::cout<<"\t------START copies tests----\n";
 		Array<int> tmp = numbers;
 		Array<int> test(tmp);
 		if (&numbers == &tmp || &numbers == &test || &test == &tmp)
-			std::cout<<"WRONG:: addresses match oopsies\n";
+			throw std::runtime_error("WRONG:: addresses match oopsies");
 		std::cout<<"adress of numbers "<<&numbers<<"\n";
 		std::cout<<"adress of tmp "<<&tmp<<"\n";
 		std::cout<<"adress of test "<<&test<<"\n";
 	}
-	std::cout<<"\t------END copies tests----\n\n";
 	for (int i = 0; i < MAX_VAL; i++)
 	{
-		if (mirror[i] != numbers[i])
-		{
-			std::cerr << "didn't save the same value!!" << std::endl;
-			return 1;
+		if (mirror[i] != numbers[i]) {
+			throw std::runtime_error("ERROR: values do not match ");
 		}
 	}
-	std::cout<<"\t------START out of range tests----\n";
-	try {
-		numbers[-2] = 0;
-	} catch(const std::exception& e) {
-		std::cerr <<"minus number " <<e.what() << '\n';
-	}
-	try {
-		numbers[MAX_VAL] = 0;
-	} catch(const std::exception& e) {
-		std::cerr << "0 "<<e.what() << '\n';
-	}
-	try {
-		numbers[MAX_VAL] = MAX_VAL + 1;
-	} catch(const std::exception& e) {
-		std::cerr << "MAX_VAL + 1 "<<e.what() << '\n';
-	}
-	std::cout<<"\t------END out of range tests----\n\n";
 
-	for (int i = 0; i < MAX_VAL; i++)
-	{
-		numbers[i] = rand();
-	}
+	printArray(numbers, MAX_VAL, "numbers");
+	printMirror(mirror, MAX_VAL, "mirror");
 	delete [] mirror;
+	std::cout<<"\t------END copies tests----\n\n";
+}
+// what the hell am i doing here 
+int main(int, char**)
+{
+	/*try	{
+		testFail();
+	} catch(const std::exception& e) {
+		std::cerr <<"exception caught in main: testFail() failed : "<< e.what() << '\n';
+	}*/
+	/*try	{
+		testBaisic();
+	} catch(const std::exception& e) {
+		std::cerr <<"exception caught in main: testBaisic() failed : "<< e.what() << '\n';
+	}*/
+	/*try {
+		testOutOfRange();
+	} catch(const std::exception& e) {
+		std::cerr <<"out of ranneg fail????? "<< e.what() << '\n';
+	}*/
+	try	{
+		testCopys();
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+		
 	// showing that numbers array still exists so mirror and numbers are not the same object
-	//printArray(numbers, MAX_VAL, "numbers");
 
 	return 0;
 }
