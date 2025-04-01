@@ -6,19 +6,19 @@
 #    By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/23 11:11:54 by shaboom           #+#    #+#              #
-#    Updated: 2025/02/28 13:37:19 by araveala         ###   ########.fr        #
+#    Updated: 2025/04/01 13:55:25 by araveala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CPPFILES = main.cpp
 CPP = c++
-CPPFLAGS = -Werror -Wextra -Wall -Wshadow -Wno-shadow -std=c++11 -MMD -MP
+CPPFLAGS = -Werror -Wextra -Wall -Wshadow -Wno-shadow -Wsign-conversion -std=c++11 -MMD -MP
 BUILDDIR = buildofiles/
 OFILES = $(addprefix $(BUILDDIR), $(notdir $(CPPFILES:.cpp=.o)))
 DEPFILES = $(OFILES:.o=.d)
 NAME = Whatever
 
-
+# flag -Wconversion specifically prevents type conversion
 all: $(BUILDDIR) $(NAME)
 
 $(BUILDDIR)%.o: %.cpp

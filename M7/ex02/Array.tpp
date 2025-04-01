@@ -6,25 +6,28 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:11:32 by shaboom           #+#    #+#             */
-/*   Updated: 2025/03/06 12:48:24 by araveala         ###   ########.fr       */
+/*   Updated: 2025/04/01 14:17:22 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #pragma once
 #include "Array.hpp"
-
+#include <type_traits>
 /**
  * instantiation of a class automatically allocates to stack, initializing a ptr to nullptr, means that accessing that 
  * pointer is accessing allocated memeory, unitialized however, we would potentially
  * be accessing non-allocated data. 
  */
 // programme must never access non allocated memory must i allocate here too 
+
+/*template <typename T>
+Array<T>::Array() : m_elements(nullptr), m_elementCount(0){ }*/
 template <typename T>
-Array<T>::Array() : m_elements(nullptr), m_elementCount(0){ }
+Array<T>::Array() : m_elements(new T[0]), m_elementCount(0) {}
 
 //se daultf here to cover all te ground
-template <typename T>
+/*template <typename T>
 Array<T>::Array(unsigned int n) : m_elements(nullptr), m_elementCount(n){
 	//std::cout<<"constructor called "<<n<<"\n";
 // do i need this check? because we nullptr
@@ -43,6 +46,23 @@ Array<T>::Array(unsigned int n) : m_elements(nullptr), m_elementCount(n){
 		}
 		//w *this.m_elements[other.elementCount];
 	}
+}*/
+
+template <typename T>
+Array<T>::Array(unsigned int n): Array() {
+	//std::cout<<"constructor called "<<n<<"\n";
+	if (n > 0)
+	{
+		delete[m_elements];
+		m_elements = new T[n];
+		m_elementCount = n;
+		for (unsigned int i = 0; i < n; i++)
+		{
+			m_elements[i] = 0;
+			//std::cout<<"elem val at "<<i<<" "<<m_elements[i]<<std::endl;			
+		}			
+	}
+	//w *this.m_elements[other.elementCount];
 }
 
 template <typename T>

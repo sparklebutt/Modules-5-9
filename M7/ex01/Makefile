@@ -6,11 +6,11 @@
 #    By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/23 11:11:54 by shaboom           #+#    #+#              #
-#    Updated: 2025/02/13 15:55:17 by araveala         ###   ########.fr        #
+#    Updated: 2025/03/28 16:45:15 by araveala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CPPFILES = $(wildcard *.cpp)
+CPPFILES = main.cpp
 CPP = c++
 CPPFLAGS = -Werror -Wextra -Wall -Wshadow -Wno-shadow -std=c++11 -MMD -MP
 BUILDDIR = buildofiles/

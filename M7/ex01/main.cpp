@@ -6,7 +6,7 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:10:08 by shaboom           #+#    #+#             */
-/*   Updated: 2025/03/05 16:44:33 by araveala         ###   ########.fr       */
+/*   Updated: 2025/03/28 16:58:19 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int main()
 	std::string array2[] {"aa", "bb", "cc", "dd", "ee"};
 	for (int i = 0; i < 5; i++)
 		std::cout<<"show old array string elem = "<<array2[i]<<std::endl;
-	::iter(array2, 5, test2);
+		::iter(array2, 5, test2);
 	for (int i = 0; i < 5; i++)
 		std::cout<<"show after iter (string + done) new array string elem = "<<array2[i]<<std::endl;
 
