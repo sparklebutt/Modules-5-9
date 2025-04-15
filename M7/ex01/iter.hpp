@@ -6,99 +6,51 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:10:51 by shaboom           #+#    #+#             */
-/*   Updated: 2025/03/05 16:45:18 by araveala         ###   ########.fr       */
+/*   Updated: 2025/04/15 11:16:41 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <array>
 #pragma once
-/**
- * <array> is a fixed type and not dynamic therefore i am not breaking the rules
- * &array[N] N is deduced from the parameter we gave array on creation 
- */
+#include <string>
+#include <iostream>
 
 /**
- * @brief why &&func??
+ * @brief 
  * 
- * @tparam T 
+ * These template functions take an address to an array , an array length
+ * and the function that will be called on each element.
  * @param array 
  * @param arrayLength 
  * @param func 
  */
 
-// simple array
-template <typename T, std::size_t N, typename Func>
-void iter(T (&array)[N], std::size_t arrayLength, Func func ){
+// This iter handles simple arrays
+template <typename T, typename Func>
+void iter(T *array, std::size_t arrayLength, Func func) {
+	std::cout<<"helooo"<<std::endl;
 	for (std::size_t i = 0; i < arrayLength; i++)
-		array[i] = func(array[i]);
-}
-// ptr array
-template <typename T, std::size_t N, typename Func>
-void iter(T* (&array)[N], std::size_t arrayLength, Func func ){
-	for (std::size_t i = 0; i < arrayLength; i++)
-		*array[i] = func(*array[i]);
+		func(array[i]);
 }
 
-// multi dimensional simple array
+// this iter handles multi dimensional arrays 
 template <typename T, std::size_t N, std::size_t X, typename Func>
-void iter(T (&array)[N][X], std::size_t arrayLength, Func func ){
-	for (std::size_t i = 0; i < arrayLength; i++)
-		iter(array[i], N + 1, func);
+void iter(T (&array)[N][X], std::size_t arrayLength, Func func){
+	for (std::size_t i = 0; i < arrayLength; i++) {
+		iter(array[i], X, func);
+	}
 }
-
 /**
  * @brief 
  *
  * testing instatiated templates 
  */
 template <typename T>
-T increment_value(T num) {
-    return num + 10;
+void increment_value(T &num) {
+	num += 10;
 }
 
 template <typename T>
-T increment_cvalue(T array) {
-	for (int i = 0; i < 3; i++)
-		array.changeVal(10);
-	return array;
+T show_const(T const constValue) {
+	std::cout<<"this value is = "<<constValue<<std::endl;	
+	return constValue;
 }
-
-/*template <typename T, typename F>
-void iter(T *array, size_t length, F function)
-{
-	for (size_t i = 0; i < length; i++)
-		function(array[i]);
-}*/
-
-// multi ptr array
-/*template <typename T, std::size_t N, std::size_t X, typename Func>
-void iter(T* (&array)[N][X], std::size_t arrayLength, Func func ){
-	for (std::size_t i = 0; i < arrayLength; i++)
-		iter(array[i], N + 1, func);
-}
-
-// std::array type 
-template <typename T, std::size_t N, typename Func>
-void iter( std::array<T, N>& array, std::size_t arrayLength, Func func ){
-	for (std::size_t i = 0; i < arrayLength; i++)
-		array[i] = func(array[i]);
-}
-
-template <typename T, std::size_t N, typename Func>
-void iter( std::array<T*, N> array, std::size_t arrayLength, Func func ){
-	for (std::size_t i = 0; i < arrayLength; i++)
-		*array[i] = func(*array[i]); //this one y
-}
-
-// multi dimensional simple std::array type
-template <typename T, std::size_t N, std::size_t X, typename Func>
-void iter( std::array<std::array<T, X>, N>& array, std::size_t arrayLength, Func func ){
-	for (std::size_t i = 0; i < arrayLength; i++)
-		iter(array[i], N + 1, func);
-}
-
-template <typename T, std::size_t N, std::size_t X, typename Func>
-void iter( std::array<std::array<T*, X>, N>& array, std::size_t arrayLength, Func func ){
-	for (std::size_t i = 0; i < arrayLength; i++)
-		iter(array[i], N + 1, func);
-}*/

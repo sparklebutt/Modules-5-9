@@ -6,7 +6,7 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:40:05 by shaboom           #+#    #+#             */
-/*   Updated: 2025/04/01 14:10:50 by araveala         ###   ########.fr       */
+/*   Updated: 2025/04/15 12:38:50 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@
  * @brief helper fucntions for testing , if you want to look inside the arrays
  * 
  */
-void printArray(const Array<int>& arr, unsigned int size, const std::string& name) {
+template <typename T>
+void printArray(const Array<T>& arr, unsigned int size, const std::string& name) {
     std::cout <<"size of array: " << name << " = " << size << " " << std::endl;
 	for (unsigned int i = 0; i < size; ++i) {
 		std::cout << " index i = " << i
@@ -41,7 +42,23 @@ void printArray(const Array<int>& arr, unsigned int size, const std::string& nam
 	}
 	if (size == 0)
 	{
-		//if (arr != nullptr)
+		std::cout<<"array empty"<<std::endl;
+	}
+    std::cout << std::endl;
+}
+
+template <typename T>
+void fillArray(Array<T>& arr, unsigned int size, const std::string& name, T adding) {
+	//int adding  = 1;
+	std::cout <<"size of array: " << name << " = " << size << " " << std::endl;
+	for (unsigned int i = 0; i < size; ++i) {
+		std::cout << " index i = " << i
+        << " adding with a value of = --" << adding << "--\n";
+		arr[i] = adding;
+		adding++;
+	}
+	if (size == 0)
+	{
 		std::cout<<"array empty"<<std::endl;
 	}
     std::cout << std::endl;
@@ -55,6 +72,9 @@ void printMirror(int* arr, unsigned int size, const std::string& name) {
     }
     std::cout << std::endl;
 }
+
+// this test just shows that i dont allow type sign swapping utalizing a 
+// flag in the makefile. as catching a minus number wth unsigned int is unsafe.
 
 /*void testCompFail()
 {
@@ -103,7 +123,26 @@ void 	testBaisic()
 		std::cerr << "test baisic values should not fail::" << '\n';
 		throw;
 	}
-
+	try
+	{
+		Array<int> numbers(10);
+		fillArray(numbers, 10, "adding to numbers", 1);
+		printArray(numbers, numbers.getSize(), "numbers");	
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		Array<char> chars(10);
+		fillArray(chars, 10, "adding to chars", 'a');
+		printArray(chars, chars.getSize(), "chars");	
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }
 
 void testOutOfRange()
@@ -130,7 +169,6 @@ void testCopys()
 	Array<int> numbers(MAX_VAL);
 	std::cout<<"making mirror \n";
 	int* mirror = new int[MAX_VAL];
-	//srand(static_cast<unsigned int>(time(NULL) % std::numeric_limits<unsigned int>::max()));
 
 	srand(time(NULL));
 	for (unsigned int i = 0; i < MAX_VAL; i++)
@@ -142,7 +180,6 @@ void testCopys()
 	printArray(numbers, MAX_VAL, "numbers");
 	std::cout<<"\t------START copies tests----\n";
 	{
-		std::cout<<"\t------START copies tests----\n";
 		Array<int> tmp = numbers;
 		Array<int> test(tmp);
 		if (&numbers == &tmp || &numbers == &test || &test == &tmp)
@@ -163,7 +200,7 @@ void testCopys()
 	delete [] mirror;
 	std::cout<<"\t------END copies tests----\n\n";
 }
-// what the hell am i doing here 
+
 int main(int, char**)
 {
 	/*try
@@ -174,26 +211,26 @@ int main(int, char**)
 	{
 		std::cerr << e.what() << '\n';
 	}*/
-	/*try	{
+	try	{
 		testEmpty();
 	} catch(const std::exception& e) {
 		std::cerr <<"exception caught in main: testFail() failed : "<< e.what() << '\n';
-	}*/
+	}
 	try	{
 		testBaisic();
 	} catch(const std::exception& e) {
 		std::cerr <<"exception caught in main: testBaisic() failed : "<< e.what() << '\n';
 	}
-	/*try {
+	try {
 		testOutOfRange();
 	} catch(const std::exception& e) {
 		std::cerr <<"out of ranneg fail????? "<< e.what() << '\n';
-	}*/
-	/*try	{
+	}
+	try	{
 		testCopys();
 	} catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
-	}*/
+	}
 		
 	// showing that numbers array still exists so mirror and numbers are not the same object
 

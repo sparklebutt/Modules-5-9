@@ -6,7 +6,7 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:11:28 by shaboom           #+#    #+#             */
-/*   Updated: 2025/03/06 12:13:12 by araveala         ###   ########.fr       */
+/*   Updated: 2025/04/14 10:54:15 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 #include <cstddef>
 #include <stdexcept>
-//#include <array>
 template <typename T>
 class Array 
 {
@@ -26,10 +25,10 @@ class Array
 		T& operator[](unsigned int index);
 		const T& operator[](unsigned int index) const ;
 		unsigned int getSize() const;
+		
 		~Array();
 
 	private:
-		// this is where we store the array 
 		T *m_elements;
 		unsigned int m_elementCount;
 };
