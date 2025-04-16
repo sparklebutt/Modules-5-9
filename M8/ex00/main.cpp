@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 12:31:57 by shaboom           #+#    #+#             */
-/*   Updated: 2025/02/04 10:29:31 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/04/16 14:55:03 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,34 @@ int pBool(bool show)
 		std::cout<<"found true \n";
 		return 1;		
 	}
-	std::cout<<"found false \n";
+	std::cerr<<"found false \n";
 	return 0;
 }
+
 int main()
 {
-	// this is a scope box
+	// Here i show how i would handle errors
 	{
-		std::vector<int> vec = {1, 2, 3, 4};
+		std::vector<int> vec = {0, 0, 0, 0};
+		::showDeets(vec);
+		std::pair<bool, std::vector<int>::iterator> res1 = easyfind(vec, 2);
+		if (res1.first == 0)
+			std::cerr<<"ERROR:: handle error value not found \n";
+		else if (res1.first == 1) {
+			*res1.second = 100;						
+			::showDeets(vec);
+		}
+		std::cout<<"\n";
+	}
+
+	{
+		std::vector<int> vec = {1, 3, 4, 2};
 		::showDeets(vec);
 		std::pair<bool, std::vector<int>::iterator> res1 = easyfind(vec, 2);
 		if (pBool(res1.first) == 1)
 			*res1.second = 100;
 		::showDeets(vec);
-		
+		std::cout<<"\n";
 	}
 	{
 		std::list<int> lst = {100, 200, 300, 400};
@@ -42,6 +56,7 @@ int main()
 		if (pBool(res1.first) == 1)
 			*res1.second = 1;
 		::showDeets(lst);
+		std::cout<<"\n";
 	}
 	{
 		// mess around with the order and it gets ordered for u
@@ -51,6 +66,7 @@ int main()
 		if (pBool(res1.first) == 1)
 			res1.second->second = "keys are imutable , strings are not ";
 		::showDeets(aunordered_map);
+		std::cout<<"\n";
 	}
 
 	{
@@ -60,6 +76,7 @@ int main()
 		if (pBool(res1.first) == 1)
 			res1.second->second = "keys are imutable , strings are not ";
 		::showDeets(bunordered_map);
+		std::cout<<"\n";
 	}
 	
 }

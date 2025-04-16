@@ -6,7 +6,7 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 12:05:24 by shaboom           #+#    #+#             */
-/*   Updated: 2025/02/11 13:44:10 by araveala         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:42:49 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,9 @@ struct associative_container<T, std::void_t<typename T::key_type, typename T::ma
 
 template <typename T>
 std::pair<bool, typename T::iterator> easyfind(T& container, int x) {
-
 	// create a pointer to type T, that is defined to be an iterator 
-	// how does it know type of contianer?
 	typename T::iterator it;
-	// handling associative containers, true?
+	// handling associative containers
 	if constexpr (associative_container<T>::value)
 	    it = container.find(x);
 	else
@@ -58,7 +56,7 @@ std::pair<bool, typename T::iterator> easyfind(T& container, int x) {
 	if (it != container.end())
 		return std::make_pair(true, it); 
 	return std::make_pair(false, container.end());
-};
+}
 
 
 template <typename T>

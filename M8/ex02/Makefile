@@ -5,10 +5,11 @@
 #                                                     +:+ +:+         +:+      #
 #    By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/01/23 11:11:54 by shaboom           #+#    #+#              #
-#    Updated: 2025/04/16 15:01:26 by araveala         ###   ########.fr        #
+#    Created: 2025/04/16 17:23:39 by araveala          #+#    #+#              #
+#    Updated: 2025/04/16 17:23:40 by araveala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 CPPFILES = main.cpp
 CPP = c++
@@ -16,7 +17,7 @@ CPPFLAGS = -Werror -Wextra -Wall -Wshadow -Wno-shadow -std=c++17 -MMD -MP
 BUILDDIR = buildofiles/
 OFILES = $(addprefix $(BUILDDIR), $(CPPFILES:.cpp=.o))
 DEPFILES = $(OFILES:.o=.d)
-NAME = easyfind
+NAME = mutanStack
 
 all: $(BUILDDIR) $(NAME)
 

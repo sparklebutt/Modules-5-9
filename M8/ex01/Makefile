@@ -6,17 +6,17 @@
 #    By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/23 11:11:54 by shaboom           #+#    #+#              #
-#    Updated: 2025/02/11 13:05:41 by araveala         ###   ########.fr        #
+#    Updated: 2025/04/16 15:02:13 by araveala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CPPFILES = main.cpp, Span.cpp
+CPPFILES = main.cpp Span.cpp
 CPP = c++
 CPPFLAGS = -Werror -Wextra -Wall -Wshadow -Wno-shadow -std=c++17 -MMD -MP
 BUILDDIR = buildofiles/
-OFILES = $(addprefix $(BUILDDIR), $(notdir $(CPPFILES:.cpp=.o)))
+OFILES = $(addprefix $(BUILDDIR), $(CPPFILES:.cpp=.o))
 DEPFILES = $(OFILES:.o=.d)
-NAME = Whatever
+NAME = span
 
 all: $(BUILDDIR) $(NAME)
 

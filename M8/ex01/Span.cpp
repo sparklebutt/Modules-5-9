@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shaboom <shaboom@student.42.fr>            +#+  +:+       +#+        */
+/*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:14:18 by shaboom           #+#    #+#             */
-/*   Updated: 2025/01/28 11:45:52 by shaboom          ###   ########.fr       */
+/*   Updated: 2025/04/16 17:03:16 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,6 @@ Span::Span(unsigned int n) : m_maxSize(n) {
 	std::cout<<" constructor called \n";
 }
 
-/*Span::Span(Span &other) {
-		
-}
-
-Span& Span::operator=(Span &other){
-	
-}*/
-
 Span::~Span(){
 	std::cout<<" destructor called \n";
 }
@@ -44,10 +36,6 @@ void Span::addNumber(int num) {
 	m_array.push_back(num);
 }
 
-/*void Span::addRange()
-{
-	
-}*/
 std::vector<int> Span::sortem()
 {
 	if (m_array.size() < 2)
@@ -62,6 +50,7 @@ void Span::showArray() const {
     }
     std::cout << std::endl;
 }
+
 
 int Span::shortestSpan() {
 	std::vector<int> sorted(sortem());
