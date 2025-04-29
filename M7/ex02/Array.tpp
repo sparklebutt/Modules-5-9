@@ -6,7 +6,7 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 15:11:32 by shaboom           #+#    #+#             */
-/*   Updated: 2025/04/15 12:37:59 by araveala         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:54:15 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Array<T>::Array() : m_elements(new T[0]), m_elementCount(0) {}
 template <typename T>
 Array<T>::Array(unsigned int n): m_elements(new T[n]), m_elementCount(n) {		
 	for (unsigned int i = 0; i < m_elementCount; i++)
-	m_elements[i] = 0;
+		m_elements[i] = 0;
 }
 
 template <typename T>

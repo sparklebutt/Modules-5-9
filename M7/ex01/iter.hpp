@@ -6,7 +6,7 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:10:51 by shaboom           #+#    #+#             */
-/*   Updated: 2025/04/15 11:16:41 by araveala         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:52:40 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 // This iter handles simple arrays
 template <typename T, typename Func>
 void iter(T *array, std::size_t arrayLength, Func func) {
-	std::cout<<"helooo"<<std::endl;
 	for (std::size_t i = 0; i < arrayLength; i++)
 		func(array[i]);
 }

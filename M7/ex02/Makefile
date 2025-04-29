@@ -6,7 +6,7 @@
 #    By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/23 11:11:54 by shaboom           #+#    #+#              #
-#    Updated: 2025/04/15 11:54:53 by araveala         ###   ########.fr        #
+#    Updated: 2025/04/16 10:11:16 by araveala         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CPPFLAGS = -Werror -Wextra -Wall -Wshadow -Wno-shadow -Wsign-conversion -std=c++
 BUILDDIR = buildofiles/
 OFILES = $(addprefix $(BUILDDIR), $(notdir $(CPPFILES:.cpp=.o)))
 DEPFILES = $(OFILES:.o=.d)
-NAME = Whatever
+NAME = Array
 
 # flag -Wconversion specifically prevents type conversion
 all: $(BUILDDIR) $(NAME)

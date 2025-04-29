@@ -6,7 +6,7 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:10:08 by shaboom           #+#    #+#             */
-/*   Updated: 2025/04/15 11:16:49 by araveala         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:51:11 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,27 +54,23 @@ int main()
 
 	std::cout<<"\033[0;32m----running multidimensional int array test (instantiated template function)-----\n\033[0m";	
 	int cmultiarray[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-	for (int i = 0; i < 3; i++)
-	{
+	for (int i = 0; i < 3; i++) {
 		for (int x = 0; x < 3; x++)
 			std::cout<<"old array elem = "<<cmultiarray[i][x]<<std::endl;
 	}
 	::iter<int, 3, 3>(cmultiarray, 3, increment_value<int>);
-	for (int i = 0; i < 3; i++)
-	{
+	for (int i = 0; i < 3; i++) {
 		for (int x = 0; x < 3; x++)
 			std::cout<<"new array elem = "<<cmultiarray[i][x]<<std::endl;		
 	}
 	// this section shows how we can add value to the address and change values of the variables. 
 	int a = 1; int b = 2; int c = 3;
 	int* mptrarray[] = {&a, &b, &c};	
-	for (int i = 0; i < 3; i++)
-	{
+	for (int i = 0; i < 3; i++) {
 		std::cout<<"old array elem for the pointers= "<<*mptrarray[i]<<std::endl;		
 	}
 	::iter<int *>(mptrarray, 3, increment_value<int *>);
-	for (int i = 0; i < 3; i++)
-	{
+	for (int i = 0; i < 3; i++) {
 		std::cout<<"new array elem for the ointers= "<<*mptrarray[i]<<std::endl;		
 	}
 	return 0;	

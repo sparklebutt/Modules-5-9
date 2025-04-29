@@ -6,7 +6,7 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:45:18 by shaboom           #+#    #+#             */
-/*   Updated: 2025/04/14 12:16:57 by araveala         ###   ########.fr       */
+/*   Updated: 2025/04/16 13:50:30 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void swap(T &a, T &b) {
 
 template<typename T>
 T min(const T &a, const T &b) {
-
 	return a >= b ? b : a;
 };
 

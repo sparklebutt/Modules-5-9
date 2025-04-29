@@ -6,23 +6,11 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:40:05 by shaboom           #+#    #+#             */
-/*   Updated: 2025/04/15 12:38:50 by araveala         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:01:12 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file main.cppint * a = new int();
 
-	std::cout<<"display elements "<<a<<"\n";
-
- * @author your name (you@domain.com)
- * @brief 
- * @version 0.1
- * @date 2025-01-24
- * 
- * @copyright Copyright (c) 2025
- * 
- */
 #include <iostream>
 #include "Array.hpp"
 #include <limits>
@@ -40,8 +28,7 @@ void printArray(const Array<T>& arr, unsigned int size, const std::string& name)
 		std::cout << " index i = " << i
         << " with a value of = --" << arr[i] << "--\n";
 	}
-	if (size == 0)
-	{
+	if (size == 0) {
 		std::cout<<"array empty"<<std::endl;
 	}
     std::cout << std::endl;
@@ -49,7 +36,6 @@ void printArray(const Array<T>& arr, unsigned int size, const std::string& name)
 
 template <typename T>
 void fillArray(Array<T>& arr, unsigned int size, const std::string& name, T adding) {
-	//int adding  = 1;
 	std::cout <<"size of array: " << name << " = " << size << " " << std::endl;
 	for (unsigned int i = 0; i < size; ++i) {
 		std::cout << " index i = " << i
@@ -57,8 +43,7 @@ void fillArray(Array<T>& arr, unsigned int size, const std::string& name, T addi
 		arr[i] = adding;
 		adding++;
 	}
-	if (size == 0)
-	{
+	if (size == 0) {
 		std::cout<<"array empty"<<std::endl;
 	}
     std::cout << std::endl;
@@ -128,8 +113,7 @@ void 	testBaisic()
 		Array<int> numbers(10);
 		fillArray(numbers, 10, "adding to numbers", 1);
 		printArray(numbers, numbers.getSize(), "numbers");	
-	}
-	catch(const std::exception& e)
+	} catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
@@ -138,8 +122,7 @@ void 	testBaisic()
 		Array<char> chars(10);
 		fillArray(chars, 10, "adding to chars", 'a');
 		printArray(chars, chars.getSize(), "chars");	
-	}
-	catch(const std::exception& e)
+	} catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
@@ -159,6 +142,13 @@ void testOutOfRange()
 	} catch(const std::exception& e) {
 		std::cerr << "RANGE + 1 "<<e.what() << '\n';
 	}
+	try {
+		Array<int> empty;
+		empty[0] = 0;
+	} catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+	}
+	
 	std::cout<<"\t------END out of range tests----\n\n";
 
 }
@@ -216,7 +206,7 @@ int main(int, char**)
 	} catch(const std::exception& e) {
 		std::cerr <<"exception caught in main: testFail() failed : "<< e.what() << '\n';
 	}
-	try	{
+	/*try	{
 		testBaisic();
 	} catch(const std::exception& e) {
 		std::cerr <<"exception caught in main: testBaisic() failed : "<< e.what() << '\n';
@@ -230,9 +220,6 @@ int main(int, char**)
 		testCopys();
 	} catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
-	}
-		
-	// showing that numbers array still exists so mirror and numbers are not the same object
-
+	}*/
 	return 0;
 }

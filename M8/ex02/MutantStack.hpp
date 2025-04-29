@@ -6,7 +6,7 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 17:23:45 by araveala          #+#    #+#             */
-/*   Updated: 2025/04/16 18:40:14 by araveala         ###   ########.fr       */
+/*   Updated: 2025/04/22 13:34:11 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ class MutantStack : public std::stack<T>{
 		using iterator = typename std::stack<T>::container_type::iterator;
 		iterator begin() { return this->c.begin();};
 		iterator end() { return this->c.end(); };
+		// add reverse and so forth .
 };
+
+// look up list for deque . 
 
 		/*void push(int x) { _theStack.push(x);};
 		int top() {return _theStack.top();};
