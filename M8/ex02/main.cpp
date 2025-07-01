@@ -6,18 +6,34 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 17:23:43 by araveala          #+#    #+#             */
-/*   Updated: 2025/04/16 18:28:59 by araveala         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:54:22 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
 #include <iostream>
 #include <list>
+
+void iteratorValues(MutantStack<int>& stack)
+{
+	stack.push(5);
+	stack.push(17);
+	std::cout << stack.top() << std::endl;
+	stack.pop();
+	std::cout << stack.size() << std::endl;
+	stack.push(3);
+	stack.push(5);
+	stack.push(737);
+	//[...]
+	stack.push(0);
+	
+}
+
 int main()
 {
 
 	MutantStack<int> mstack;
-	mstack.push(5);
+	/*mstack.push(5);
 	mstack.push(17);
 	std::cout << mstack.top() << std::endl;
 	mstack.pop();
@@ -26,7 +42,8 @@ int main()
 	mstack.push(5);
 	mstack.push(737);
 	//[...]
-	mstack.push(0);
+	mstack.push(0);*/
+	iteratorValues(mstack);
 	MutantStack<int>::iterator it = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();
 	++it;
@@ -52,9 +69,6 @@ int main()
 		lstack.push_back(0);
 		std::list<int>::iterator it = lstack.begin();
 		std::list<int>::iterator ite = lstack.end();
-
-//		MutantStack<int>::iterator it = mstack.begin();
-//		MutantStack<int>::iterator ite = mstack.end();
 		++it;
 		--it;
 		while (it != ite)
@@ -64,6 +78,20 @@ int main()
 		}
 		
 		return 0;
+		
+	}
+	const MutantStack<int> const_mstack = mstack;
+	
+	//iteratorValues(const_mstack);
+	{
+		MutantStack<int>::const_iterator const_it = const_mstack.begin();
+		MutantStack<int>::const_iterator const_ite = const_mstack.end();
+		while (const_it != const_ite)
+		{
+			std::cout << *const_it << std::endl;
+			++const_it;
+		}
+		
 		
 	}
 }

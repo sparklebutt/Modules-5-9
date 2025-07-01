@@ -6,7 +6,7 @@
 /*   By: araveala <araveala@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 17:23:45 by araveala          #+#    #+#             */
-/*   Updated: 2025/04/22 13:34:11 by araveala         ###   ########.fr       */
+/*   Updated: 2025/07/01 15:38:01 by araveala         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,18 @@ class MutantStack : public std::stack<T>{
 		using iterator = typename std::stack<T>::container_type::iterator;
 		iterator begin() { return this->c.begin();};
 		iterator end() { return this->c.end(); };
+		
+		using const_iterator = typename std::stack<T>::container_type::iterator;
+		const_iterator begin() const { return this->c.begin();};
+		const_iterator end() const { return this->c.end(); };
+
 		// add reverse and so forth .
+		using reverse_iterator = typename std::stack<T>::container_type::reverse_iterator;
+		reverse_iterator rbegin() { return this->c.rbegin(); }
+		reverse_iterator rend() { return this->c.rend(); }
+
+		using const_reverse_iterator = typename std::stack<T>::container_type::reverse_iterator;
+		const_reverse_iterator rbegin() const { return this->c.rbegin(); }
+		const_reverse_iterator rend() const { return this->c.rend(); }
 };
 
-// look up list for deque . 
-
-		/*void push(int x) { _theStack.push(x);};
-		int top() {return _theStack.top();};
-		void pop() { _theStack.pop(); };
-		int size() { return _theStack.size(); };
-
-		int begin() { return _theStack._get_container_.begin();};
-		int end() { return _theStack.size(); };*/
-
-		/*
-		
-		/*void push(int x) { this->c.push(x);};
-		int top() {return this->top();};
-		void pop() { this->pop(); };
-		int size() { return this->size(); };
-		*/
